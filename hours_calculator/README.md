@@ -1,5 +1,4 @@
 # Overview
-{Important! Do not say in this section that this is college assignment. Talk about what you are trying to accomplish as a software engineer to further your learning.}
 
 This program is a calculator for the total hours one works in a week. I work construction and I wanted to automate the calculation of how many hours I work each day and each week. To automate this process, I made this `Hours Calculator`.
 
