@@ -4,8 +4,8 @@ header {
     display: grid;
     grid-template-columns: 1fr 1fr;
     height: 150px;
-    background-color: #f1faee;
-    border: 3px solid #9d4edd;
+    background: linear-gradient(to right, rgba(117, 221, 221, 1), rgba(117, 221, 221, 0));
+    border: 3px solid #508991;
     border-radius: 10px;
 }
 
@@ -15,7 +15,7 @@ header {
     justify-self: left;
     max-width: 200px;
     max-height: 200px;
-    border: 3px solid #9d4edd;
+    border: 3px solid #508991;
     border-radius: 8px;
 }
 
@@ -29,7 +29,7 @@ header {
 }
 
 body {
-    background-color: #354f52;
+    background-color: #004346;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -56,6 +56,8 @@ body {
 .arrow {
     height: 150px;
     cursor: pointer;
+    border: 3px solid rgba(113, 108, 108, 0.2);
+    border-radius: 8px;
 }
 
 .left {
@@ -64,7 +66,7 @@ body {
 
 .frame {
     width: 800px;
-    height: 450px;
+    height: 425px;
     overflow: hidden;
 }
 
@@ -72,23 +74,54 @@ body {
     display: flex;
     transition: all 1s ease;
     align-items: center;
+    padding-top: 50px;
 }
 
 .image {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 8px;
 }
 
 .bottom {
     display: flex;
-    gap: 30px;
+    gap: 25px;
 }
 
 .button {
-    width: 15px;
+    width: 30px;
     height: 15px;
-    border-radius: 50%;
-    border: 1px solid white;
+    border-radius: 20%;
+    border: 1px solid #508991;
     cursor: pointer;
+}
+
+.paragraphs {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.column {
+    flex: 1;
+    background-color: #dad7cd;
+    border: 2px solid #508991;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Oswald';
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #344e41;
+}
+
+p {
+    font-family: 'Roboto Slab';
+    font-size: 1rem;
+    color: #344e41;
 }

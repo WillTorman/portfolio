@@ -16,7 +16,7 @@ for (let i = 0; i < length; i++) {
 }
 
 const buttons = document.querySelectorAll(".button")
-buttons[0].style.backgroundColor = "e0aaff"
+buttons[0].style.backgroundColor = "09bc8a"
 
 const resetBackground = () => {
     buttons.forEach(button => {
@@ -29,7 +29,7 @@ buttons.forEach((button, i) => {
         resetBackground()
         slider.style.transform = `translateX(-${i * 800}px)`;
         slideNumber = i + 1
-        button.style.backgroundColor = "e0aaff";
+        button.style.backgroundColor = "09bc8a";
     });
 });
 
@@ -62,7 +62,7 @@ const getLastSlide = () => {
 
 const changeColor = () => {
     resetBackground()
-    buttons[slideNumber - 1].style.backgroundColor = "e0aaff";
+    buttons[slideNumber - 1].style.backgroundColor = "09bc8a";
 }
 
 // Check if right arrow is clicked
