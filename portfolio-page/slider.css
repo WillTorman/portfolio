@@ -1,7 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Roboto+Slab&display=swap');
+
+header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 150px;
+    background-color: #f1faee;
+    border: 3px solid #9d4edd;
+    border-radius: 10px;
+}
+
+.profPic {
+    grid-column: 1/2;
+    grid-row: 1/1;
+    justify-self: left;
+    max-width: 200px;
+    max-height: 200px;
+    border: 3px solid #9d4edd;
+    border-radius: 8px;
+}
+
+.title {
+    justify-self: center;
+    padding-left: 20px;
+    grid-column: 1/2;
+    grid-row: 1/1;
+    font-family: 'Oswald';
+    font-size: 30px;
+}
+
 body {
-    background-color: #344E41;
+    background-color: #354f52;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
     /* PURPLES */
     /* 7b2cbf */
@@ -34,13 +64,14 @@ body {
 
 .frame {
     width: 800px;
-    height: 500px;
+    height: 450px;
     overflow: hidden;
 }
 
 .slider {
     display: flex;
     transition: all 1s ease;
+    align-items: center;
 }
 
 .image {
