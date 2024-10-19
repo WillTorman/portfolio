@@ -1,5 +1,4 @@
 # Overview
-{Important! Do not say in this section that this is college assignment. Talk about what you are trying to accomplish as a software engineer to further your learning.}
 
 This program is a calculator for the total hours one works in a week. I work construction and I wanted to automate the calculation of how many hours I work each day and each week. To automate this process, I made this `Hours Calculator`.
 
@@ -7,7 +6,7 @@ The user will input their start and end time. The program will then calculate ho
 
 {Provide a link to your YouTube demonstration. It should be a 4-5 minute demo of the software running and a walkthrough of the code. Focus should be on sharing what you learned about the language syntax.}
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Hours Calculator Demo Video](https://youtu.be/Pg93thWJKAk)
 
 # Development Environment
 I used Microsoft's Visual Studio to write this program, because it is the IDE that I feel works best for C++ programming.
