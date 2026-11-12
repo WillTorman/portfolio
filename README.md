@@ -51,13 +51,18 @@ Visit my portfolio to learn more about me, my projects, skills, and experience:
 
 ## Development
 
-This portfolio is built with:
+This portfolio is a server-rendered ESM Node.js application using Express, EJS, and
+PostgreSQL. It includes session authentication, role-aware dashboards, dynamic
+projects, user comments, and a contact workflow.
 
-- JavaScript
-- GitHub Pages
-- GitHub Actions
+1. Copy `.env.example` to `.env` and set `DATABASE_URL` and `SESSION_SECRET`.
+2. Install dependencies with `npm install`.
+3. Initialize the database with `npm run db:init`.
+4. Start development with `npm run dev`, then visit `http://localhost:3000`.
 
-Every push to `main` automatically builds and deploys the site through GitHub Actions.
+The application is ready for Render with a PostgreSQL connection string supplied
+through environment variables. Set `NODE_ENV=production` and configure
+`SESSION_SECRET`, `DATABASE_URL`, `ADMIN_EMAIL`, and `ADMIN_PASSWORD` in Render.
 
 ---
 

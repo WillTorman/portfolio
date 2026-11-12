@@ -1,0 +1,12 @@
+<section class="hero">
+  <p class="eyebrow">Software Engineer • Backend &amp; Web Development</p>
+  <h1>Building reliable software for people and the web.</h1>
+  <p class="lede">I’m William Torman, a software engineering student focused on practical backend systems, thoughtful user experiences, and maintainable code.</p>
+  <a class="button" href="/projects">Explore my work</a>
+</section>
+<section class="section">
+  <div class="section-heading"><h2>Featured projects</h2><a href="/projects">View all →</a></div>
+  <div class="cards">
+    <% projects.forEach(project => { %><article class="card"><p class="eyebrow"><%= project.technology %></p><h3><a href="/projects/<%= project.slug %>"><%= project.title %></a></h3><p><%= project.summary %></p></article><% }) %>
+  </div>
+</section>

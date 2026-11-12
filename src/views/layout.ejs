@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/">William Torman</a>
+    <nav>
+      <a href="/projects">Projects</a>
+      <a href="/contact">Contact</a>
+      <% if (currentUser) { %>
+        <a href="/dashboard">Dashboard</a>
+        <form class="inline" method="post" action="/logout"><button class="link-button" type="submit">Sign out</button></form>
+      <% } else { %>
+        <a href="/login">Sign in</a>
+      <% } %>
+    </nav>
+  </header>
+  <main class="container">
+    <% if (flash) { %><div class="flash"><%= flash %></div><% } %>
+    <%- body %>
+  </main>
+  <footer class="site-footer">Software Engineer • Backend &amp; Web Development</footer>
+</body>
+</html>
