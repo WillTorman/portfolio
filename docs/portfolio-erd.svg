@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title description">
+  <title id="title">Portfolio PostgreSQL entity relationship diagram</title>
+  <desc id="description">Entity relationship diagram for users, projects, project comments, and contact requests.</desc>
+  <defs>
+    <style>
+      .table { fill: #ffffff; stroke: #243447; stroke-width: 2; }
+      .header { fill: #243447; }
+      .title { fill: #ffffff; font: bold 18px Arial, sans-serif; }
+      .field { fill: #243447; font: 14px Consolas, monospace; }
+      .key { fill: #9c2c2c; font: bold 14px Consolas, monospace; }
+      .relation { stroke: #527a9e; stroke-width: 2.5; fill: none; }
+      .cardinality { fill: #527a9e; font: bold 16px Arial, sans-serif; }
+      .caption { fill: #52606d; font: 14px Arial, sans-serif; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="760" fill="#f4f7fa"/>
+  <text x="600" y="34" text-anchor="middle" fill="#243447" font="bold 24px Arial, sans-serif">Portfolio Database ERD</text>
+  <text x="600" y="58" text-anchor="middle" class="caption">PostgreSQL schema represented for pgAdmin ERD documentation</text>
+
+  <path class="relation" d="M 300 210 C 390 210, 420 150, 490 150"/>
+  <path class="relation" d="M 300 250 C 390 250, 420 500, 490 500"/>
+  <path class="relation" d="M 790 225 C 850 225, 870 250, 900 250"/>
+  <path class="relation" d="M 790 265 C 850 265, 870 520, 900 520"/>
+
+  <text x="315" y="198" class="cardinality">1</text>
+  <text x="465" y="142" class="cardinality">0..*</text>
+  <text x="315" y="275" class="cardinality">0..1</text>
+  <text x="465" y="492" class="cardinality">0..*</text>
+  <text x="800" y="215" class="cardinality">1</text>
+  <text x="880" y="242" class="cardinality">0..*</text>
+  <text x="800" y="285" class="cardinality">1</text>
+  <text x="880" y="512" class="cardinality">0..*</text>
+
+  <g transform="translate(40 120)">
+    <rect class="table" width="260" height="245" rx="4"/>
+    <rect class="header" width="260" height="38" rx="4"/>
+    <text class="title" x="14" y="25">users</text>
+    <text class="key" x="14" y="63">PK  id SERIAL</text>
+    <text class="field" x="14" y="88">email VARCHAR(255) UNIQUE</text>
+    <text class="field" x="14" y="113">password_hash VARCHAR(255)</text>
+    <text class="field" x="14" y="138">display_name VARCHAR(100)</text>
+    <text class="field" x="14" y="163">role VARCHAR(20)</text>
+    <text class="field" x="14" y="188">created_at TIMESTAMPTZ</text>
+    <text class="caption" x="14" y="222">roles: admin, moderator, user</text>
+  </g>
+
+  <g transform="translate(490 70)">
+    <rect class="table" width="300" height="300" rx="4"/>
+    <rect class="header" width="300" height="38" rx="4"/>
+    <text class="title" x="14" y="25">projects</text>
+    <text class="key" x="14" y="63">PK  id SERIAL</text>
+    <text class="field" x="14" y="88">title VARCHAR(150)</text>
+    <text class="field" x="14" y="113">slug VARCHAR(160) UNIQUE</text>
+    <text class="field" x="14" y="138">summary TEXT</text>
+    <text class="field" x="14" y="163">description TEXT</text>
+    <text class="field" x="14" y="188">technology VARCHAR(255)</text>
+    <text class="field" x="14" y="213">project_url VARCHAR(500)</text>
+    <text class="field" x="14" y="238">featured BOOLEAN</text>
+    <text class="field" x="14" y="263">created_at / updated_at</text>
+  </g>
+
+  <g transform="translate(900 120)">
+    <rect class="table" width="260" height="245" rx="4"/>
+    <rect class="header" width="260" height="38" rx="4"/>
+    <text class="title" x="14" y="25">project_comments</text>
+    <text class="key" x="14" y="63">PK  id SERIAL</text>
+    <text class="key" x="14" y="88">FK  project_id INTEGER</text>
+    <text class="key" x="14" y="113">FK  user_id INTEGER</text>
+    <text class="field" x="14" y="138">body TEXT</text>
+    <text class="field" x="14" y="163">created_at TIMESTAMPTZ</text>
+    <text class="field" x="14" y="188">updated_at TIMESTAMPTZ</text>
+    <text class="caption" x="14" y="222">CASCADE on project/user delete</text>
+  </g>
+
+  <g transform="translate(490 445)">
+    <rect class="table" width="300" height="245" rx="4"/>
+    <rect class="header" width="300" height="38" rx="4"/>
+    <text class="title" x="14" y="25">contact_requests</text>
+    <text class="key" x="14" y="63">PK  id SERIAL</text>
+    <text class="key" x="14" y="88">FK  user_id INTEGER NULL</text>
+    <text class="field" x="14" y="113">name VARCHAR(100)</text>
+    <text class="field" x="14" y="138">email VARCHAR(255)</text>
+    <text class="field" x="14" y="163">message TEXT</text>
+    <text class="field" x="14" y="188">status VARCHAR(20)</text>
+    <text class="field" x="14" y="213">response TEXT</text>
+    <text class="field" x="14" y="238">created_at / updated_at</text>
+  </g>
+
+  <text x="600" y="730" text-anchor="middle" class="caption">Foreign keys: contact_requests.user_id → users.id; project_comments.project_id → projects.id; project_comments.user_id → users.id</text>
+</svg>

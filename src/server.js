@@ -53,5 +53,7 @@ app.use('/dashboard', dashboardRoutes);
 app.use(notFound);
 app.use(errorHandler);
 
-const port = Number(process.env.PORT) || 3000;
-app.listen(port, () => console.log(`Portfolio server listening on port ${port}`));
+const PORT = Number(process.env.PORT) || 3000;
+app.listen(PORT, async () => {
+  console.log(`Server is running on http://127.0.0.1:${PORT}`);
+});

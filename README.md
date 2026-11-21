@@ -1,75 +1,78 @@
-<div align="center">
+# William Torman Portfolio
 
-# William Torman | Portfolio
+## Project Description
 
-### Software Engineer • Backend & Web Development
+This project is a server-rendered personal portfolio for William Torman, a
+software engineering student and developer. Visitors can browse featured
+projects, read project details, submit contact requests, and leave comments
+after creating an account. The site is intended for prospective employers,
+clients, collaborators, and anyone evaluating the author's software projects.
 
-<a href="https://willtorman.github.io">
-  <img src="https://img.shields.io/badge/Portfolio-willtorman.github.io-000000?style=for-the-badge" alt="Portfolio">
-</a>
-<a href="https://github.com/WillTorman">
-  <img src="https://img.shields.io/badge/GitHub-WillTorman-181717?style=for-the-badge&logo=github" alt="GitHub">
-</a>
+The application uses Node.js, Express, EJS, PostgreSQL, and session-based
+authentication.
 
-</div>
+## Database Schema
 
----
+The PostgreSQL schema is defined in [`src/db/schema.sql`](src/db/schema.sql).
+The ERD image below documents the tables and their relationships.
 
-## About
+![Portfolio PostgreSQL entity relationship diagram](docs/portfolio-erd.svg)
 
-I'm William Torman, a Software Engineering student at Brigham Young University–Idaho interested in building reliable software, web applications, and backend systems.
+The database contains:
 
-This repository contains the source code for my personal developer portfolio.
+- `users`: accounts, password hashes, display names, and roles.
+- `projects`: portfolio project content and publication metadata.
+- `project_comments`: authenticated user comments associated with projects.
+- `contact_requests`: visitor messages, optional user associations, statuses,
+  and responses.
 
-## Tech Stack
+## User Roles
 
-<div align="center">
+| Role | Capabilities |
+| --- | --- |
+| **User** | Register, sign in, view projects, submit contact requests, and post project comments. A user can view their own dashboard activity. |
+| **Moderator** | Everything a user can do, plus view and update contact request status and responses. |
+| **Admin** | Everything a moderator can do, plus create, edit, and delete projects and change any user's role. Admins can view all users and projects in the dashboard. |
 
-<img src="https://skillicons.dev/icons?i=js,react,ts,nodejs,python,cpp,sql,git,vite" alt="Technology stack">
+New registrations receive the `user` role. Roles are stored in the `users.role`
+column and can only be changed by an admin.
 
-</div>
+## Test Account Credentials
 
-## Featured Projects
+Use the following test accounts when the database has been populated with the
+course/development seed data:
 
-| Project                        | Description                                         |
-| ------------------------------ | --------------------------------------------------- |
-| **Clockr**                     | Android application for tracking work hours and pay |
-| **Lynn's Library**             | C++ Library/Book tracking app                       |
-| **Thortech LLC**               | Web application for my personal tech business       |
+| Role | Email |
+| --- | --- |
+| Admin | `admin@example.com` |
+| Moderator | `moderator@example.com` |
+| User | `user@example.com` |
 
-## Portfolio
+The password is intentionally omitted from this README. All three test
+accounts use the password supplied for the application's test environment.
 
-Visit my portfolio to learn more about me, my projects, skills, and experience:
+## Setup
 
-<div align="center">
-
-<a href="https://willtorman.github.io">
-  <strong>→ willtorman.github.io</strong>
-</a>
-
-</div>
-
-## Development
-
-This portfolio is a server-rendered ESM Node.js application using Express, EJS, and
-PostgreSQL. It includes session authentication, role-aware dashboards, dynamic
-projects, user comments, and a contact workflow.
-
-1. Copy `.env.example` to `.env` and set `DATABASE_URL` and `SESSION_SECRET`.
+1. Copy the environment configuration into `.env` and set `DATABASE_URL` and
+   `SESSION_SECRET`.
 2. Install dependencies with `npm install`.
-3. Initialize the database with `npm run db:init`.
-4. Start development with `npm run dev`, then visit `http://localhost:3000`.
+3. Initialize PostgreSQL with `npm run db:init`.
+4. Start the development server with `npm run dev`.
+5. Open <http://localhost:3000>.
 
-The application is ready for Render with a PostgreSQL connection string supplied
-through environment variables. Set `NODE_ENV=production` and configure
-`SESSION_SECRET`, `DATABASE_URL`, `ADMIN_EMAIL`, and `ADMIN_PASSWORD` in Render.
+Set `ADMIN_EMAIL` and `ADMIN_PASSWORD` before running `npm run db:init` to
+create or update the administrator account. The application stores only a
+bcrypt password hash.
 
----
+## Known Limitations
 
-<div align="center">
-
-**William Torman**
-
-Software Engineering Student • Developer • Builder
-
-</div>
+- There is no password reset, email verification, or email notification
+  workflow.
+- Contact requests are stored in PostgreSQL; submitting one does not send an
+  email automatically.
+- The application does not currently include automated unit or integration
+  tests.
+- Forms do not yet include CSRF tokens, so deployment should be paired with
+  an appropriate CSRF protection strategy.
+- The ERD documents the application tables; `connect-pg-simple` may also create
+  its session table when the server first starts.
