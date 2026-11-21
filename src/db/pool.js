@@ -1,3 +1,6 @@
+// pool.js builds the app's connection from DATABASE_URL
+// init.js initializes that database using the schema.
+// server.js uses the same pool for application queries and sessions.
 import 'dotenv/config';
 import pg from 'pg';
 
